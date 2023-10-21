@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login_page</title>
+    <link rel="stylesheet" href="style_login.css">
+    
+</head>
+<body>
+    <center>
+    <form action="login.php" method="post" class="bgcolor">
+        <div class="top_headings">
+        
+            <button>login</button>
+            <button id="registrationButton">registration</button>
+        
+        </div>
+        <div class="login_details"><br><br>
+            <label for="userName">userName</label>
+            <input type="text" id="userName" name="userName" required><br><br>
+            <label for="emailId">emailId</label>
+            <input type="text" id="emailId" name="emailId" required><br><br>
+            <label for="password">password</label>
+            <input type="text" id="password" name="password" required><br><br>
+            <button id="submitButton">submit</button>
+
+        </div>
+    </form>
+    </center>
+    <script>
+        const registrationButton=document.getElementById('registrationButton');
+        registrationButton.addEventListener('click',function(){
+            window.open('registration.html','_blank');
+
+        });
+
+        const submitButton=document.getElementById('submitButton'); 
+        submitButton.addEventListener('click',function(event){
+            const userName=document.getElementById('userName').value;
+            const emailId=document.getElementById('emailId').value;
+            const password=document.getElementById('password').value;
+            if (userName.trim()=="" || emailId.trim()=="" || password.trim()==""){
+                event.preventDefault();
+                alert("Please fill the all blanks")
+
+            }
+            else{
+                window.open('index.html','_blank');
+            }
+
+
+        });
+
+    </script>
+</body>
+</html>

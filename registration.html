@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registration_page</title>
+    <link rel="stylesheet" href="style_registration.css">
+</head>
+<body>
+    <div class="test-center">
+        <form action="registration.php" method="post" class="bgcolor">
+            <div class="top_header">
+                <button>login</button>
+                <button>registration</button>
+            </div>
+            <div class="registration_details">
+                <label for="firstName">firstName</label>
+                <input type="text" id="firstName" name="firstName" required><br><br>
+                <label for="lastName">lastName</label>
+                <input type="text" id="lastName" name="lastName" required><br><br>
+                <label for="userName">userName</label>
+                <input type="text" id="userName" name="userName" required><br><br>
+                <label for="emailId">emailId</label>
+                <input type="text" id="emailId" name="emailId" required><br><br>
+                <label for="password">password</label>
+                <input type="text" id="password" name="password" required><br><br>
+                <button id="submitButton">submit</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        const submitButton=document.getElementById('submitButton');
+        submitButton.addEventListener('click',function(event){
+            const firstName=document.getElementById('firstName').value;
+            const lastName=document.getElementById('lastName').value;
+            const userName=document.getElementById('userName').value;
+            const emailId=document.getElementById('emailId').value;
+            const password=document.getElementById('password').value;
+            if (userName.trim()=="" || emailId.trim()=="" || password.trim()=="" || firstName.trim()=="" || lastName.trim()==""){
+                event.preventDefault();
+                alert("Please fill the all blanks.");
+
+            }
+            else{
+                window.open('login.html','_blank');
+            }
+        });
+    </script>
+    
+</body>
+</html>
