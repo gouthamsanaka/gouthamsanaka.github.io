@@ -1,27 +1,21 @@
 <?php
-require 'db_connect.php';
+include 'db_connect.php'; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $userName = $_POST['userName'];
-    $password = $_POST['password'];
+    $Id = $_POST["Id"];
+    $userName = $_POST["userName"];
+    $emailId = $_POST["emailId"];
+    $password = $_POST["password"];
 
-    $sql = "SELECT * FROM users_details WHERE userName = ?";
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param('s', $userName);
+    // Insert data into the database
+    $sql = "INSERT INTO users (Id,userName, emailId,password) VALUES ('$Id',$userName', '$emailId','$password')";
 
-    if ($stmt->execute()) {
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-
-        if ($row && password_verify($password, $row['password'])) {
-            echo "Login successful.";
-        } else {
-            echo "Invalid userName or password.";
-        }
+    if ($conn->query($sql) === TRUE) {
+        echo "Record inserted successfully";
     } else {
-        echo "Error: " . $stmt->error;
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
-
-    $stmt->close();
 }
+
+$conn->close();
 ?>
